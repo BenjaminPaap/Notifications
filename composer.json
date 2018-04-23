@@ -1,0 +1,20 @@
+{
+    "name": "bpa/notifications",
+    "description": "A system to send notifications to different handlers",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Paap",
+            "email": "benjamin.paap@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bpa\\Notifications\\": "src/"
+        }
+    },
+    "suggest": {
+        "bpa/notifications-stride": "Allows you to send notifications to your stride cloud instance"
+    }
+}

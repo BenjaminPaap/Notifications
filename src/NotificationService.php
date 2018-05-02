@@ -3,6 +3,7 @@
 namespace Bpa\Notifications;
 
 use Bpa\Notifications\Handler\HandlerInterface;
+use Bpa\Notifications\Notification\MessageInterface;
 
 /**
  * Notification Service
@@ -10,9 +11,9 @@ use Bpa\Notifications\Handler\HandlerInterface;
 class NotificationService implements HandlerInterface
 {
     /**
-     * @var array|MappingInterface[]
+     * @var array|HandlerInterface[]
      */
-    private $mapping;
+    private $handlers = [];
 
     /**
      * Add a message mapping
@@ -31,26 +32,27 @@ class NotificationService implements HandlerInterface
     }
 
     /**
+     * @param HandlerInterface $handler
+     */
+    public function addHandler(HandlerInterface $handler)
+    {
+        $this->handlers[] = $handler;
+    }
+
+    /**
      * @param MessageInterface $message
      *
      * @return bool
      */
     public function notify(MessageInterface $message)
     {
-        $class = get_class($message);
         $success = true;
 
-        if (false === isset($this->mapping[$class])) {
-            throw new \Exception('There is no mapping registered for this type of message');
-        }
+        foreach ($this->handlers as $handler) {
+            $handlerResult = $handler->notify($message);
 
-        foreach ($this->mapping as $mapping) {
-            if (is_a($message, $mapping->getMessageClass())) {
-                foreach ($mapping->getHandler() as $handler) {
-                    $success &= $handler->notify($message);
-                }
-
-                break;
+            if (is_bool($result)) {
+                $success &= $result;
             }
         }
 

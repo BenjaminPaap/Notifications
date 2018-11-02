@@ -53,6 +53,7 @@ Currently there is only a single handler. But more are to come. I would
 love to see some contributions for other chat tools like Slack, Hipchat,
 IRC or others.
 
- - Stride: [bpa/notifications-stride](https://github.com/bpa/)
+ - Stride: [bpa/notifications-stride](https://github.com/BenjaminPaap/NotificationsStride)
+ - Slack: [bpa/notifications-slack](https://github.com/BenjaminPaap/NotificationsSlack)
 
 # Contribution

@@ -15,6 +15,7 @@
         }
     },
     "suggest": {
-        "bpa/notifications-stride": "Allows you to send notifications to your stride cloud instance"
+        "bpa/notifications-stride": "Allows you to send notifications to your stride cloud instance",
+        "bpa/notifications-slack": "Allows you to send notifications to your slack instance"
     }
 }
